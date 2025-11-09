@@ -150,6 +150,55 @@ const GameBoard = ({ showToast }) => {
     }
   };
 
+  // Handle individual cell input
+  const handleCellInput = (index, value) => {
+    // Only allow digits
+    const digit = value.replace(/\D/g, '');
+    if (digit.length > 1) return;
+
+    const newGuess = currentGuess.split('');
+    while (newGuess.length < numDigits) {
+      newGuess.push('');
+    }
+    
+    newGuess[index] = digit;
+    const updatedGuess = newGuess.join('');
+    setCurrentGuess(updatedGuess);
+
+    // Auto-focus next input if digit entered
+    if (digit && index < numDigits - 1) {
+      const nextInput = document.querySelector(`input.cell-input:nth-child(${index + 2})`);
+      if (nextInput) {
+        nextInput.focus();
+      }
+    }
+  };
+
+  // Handle key navigation in cells
+  const handleCellKeyDown = (index, e) => {
+    if (e.key === 'Enter' && currentGuess.length === numDigits) {
+      handleGuess();
+    } else if (e.key === 'Backspace') {
+      if (!currentGuess[index] && index > 0) {
+        // If current cell is empty and backspace pressed, go to previous cell
+        const prevInput = document.querySelector(`input.cell-input:nth-child(${index})`);
+        if (prevInput) {
+          prevInput.focus();
+        }
+      }
+    } else if (e.key === 'ArrowLeft' && index > 0) {
+      const prevInput = document.querySelector(`input.cell-input:nth-child(${index})`);
+      if (prevInput) {
+        prevInput.focus();
+      }
+    } else if (e.key === 'ArrowRight' && index < numDigits - 1) {
+      const nextInput = document.querySelector(`input.cell-input:nth-child(${index + 2})`);
+      if (nextInput) {
+        nextInput.focus();
+      }
+    }
+  };
+
   // Get cell class based on result
   const getCellClass = (result) => {
     switch (result) {
@@ -198,9 +247,17 @@ const GameBoard = ({ showToast }) => {
         {!gameOver && (
           <div className="guess-row current">
             {Array.from({ length: numDigits }, (_, index) => (
-              <div key={index} className="cell current">
-                {currentGuess[index] || ''}
-              </div>
+              <input
+                key={index}
+                type="text"
+                className="cell current cell-input"
+                value={currentGuess[index] || ''}
+                onChange={(e) => handleCellInput(index, e.target.value)}
+                onKeyDown={(e) => handleCellKeyDown(index, e)}
+                maxLength={1}
+                inputMode="numeric"
+                pattern="[0-9]*"
+              />
             ))}
           </div>
         )}
