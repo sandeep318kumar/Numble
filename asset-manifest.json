@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Numble/static/css/main.6d9e1b68.css",
+    "main.js": "/Numble/static/js/main.586e9ed2.js",
+    "static/js/453.6bc88f5f.chunk.js": "/Numble/static/js/453.6bc88f5f.chunk.js",
+    "index.html": "/Numble/index.html",
+    "main.6d9e1b68.css.map": "/Numble/static/css/main.6d9e1b68.css.map",
+    "main.586e9ed2.js.map": "/Numble/static/js/main.586e9ed2.js.map",
+    "453.6bc88f5f.chunk.js.map": "/Numble/static/js/453.6bc88f5f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6d9e1b68.css",
+    "static/js/main.586e9ed2.js"
+  ]
+}
