@@ -1,0 +1,250 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px 20px 0 0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.modal-body {
+  padding: 30px;
+  color: white;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.rules-section {
+  margin-bottom: 30px;
+}
+
+.rules-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rules-section li {
+  padding: 8px 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 25px;
+}
+
+.rules-section li::before {
+  content: "•";
+  color: #c9b458;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+.examples-section {
+  margin-bottom: 30px;
+}
+
+.examples-section h3 {
+  margin: 0 0 20px 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.example {
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.example-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.example .cell {
+  width: 50px;
+  height: 50px;
+  border: 2px solid;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+}
+
+.example .cell.correct {
+  background: #6aaa64;
+  border-color: #6aaa64;
+}
+
+.example .cell.present {
+  background: #c9b458;
+  border-color: #c9b458;
+}
+
+.example .cell.absent {
+  background: #787c7e;
+  border-color: #787c7e;
+}
+
+.example p {
+  margin: 0;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.additional-rules {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.additional-rules h3 {
+  margin: 0 0 20px 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.additional-rules ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.additional-rules li {
+  padding: 8px 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .modal-header {
+    padding: 20px;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .example .cell {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+  
+  .additional-rules {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    width: 98%;
+    margin: 10px;
+  }
+  
+  .modal-header {
+    padding: 15px;
+  }
+  
+  .modal-body {
+    padding: 15px;
+  }
+  
+  .example .cell {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .example-row {
+    gap: 5px;
+  }
+}
